@@ -1,15 +1,10 @@
-import React from "react";
-import BaseLayout from "./layouts/BaseLayout.tsx";
-import { Button, Card } from "antd";
-import { HeartFilled, SmileOutlined } from "@ant-design/icons";
+import Dashboard from "./pages/Dashboard.tsx";
+import Budget from "./pages/Budget.tsx";
+import Transactions from "./pages/Transactions.tsx";
 
-const App = () => (
-  <BaseLayout>
-    <Card>
-      <Button type = "primary">Hi</Button>
-      <HeartFilled />
-    </Card>
-  </BaseLayout> 
-);
+const App = () => {
+  return <Budget />;
+
+};  
 
 export default App;
