@@ -2,8 +2,19 @@ import Dashboard from "./pages/Dashboard.tsx";
 import Budget from "./pages/Budget.tsx";
 import Transactions from "./pages/Transactions.tsx";
 
+import {Routes, Route, Navigate} from "react-router-dom";
+
+
 const App = () => {
-  return <Budget />;
+  return (
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/budget" element={<Budget />} />
+      <Route path="/transactions" element={<Transactions />} />
+      <Route path="*" element={<Navigate to="/" />} /> {/*la orice alt path(pe care nu l-am creat), navigheaza catre path-ul de baza*/}
+    </Routes>
+
+  )
 
 };  
 
