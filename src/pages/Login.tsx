@@ -1,15 +1,17 @@
-import BaseLayout from "@/layouts/BaseLayout";
 import { Button, Card, Checkbox, Form, Input } from "antd";
+import { login } from "@/requests";
+
 
 type FieldType = {
-  username?: string;
-  password?: string;
-  remember?: string;
+  username: string;
+  password: string;
+  remember?: boolean; // ? --> This is optional
 };
 
 const Login = () => {
   const onFinish = (values: FieldType) => {
     console.log("Success:", values);
+    login(values);
   };
 
   // const onFinishFailed = (errorInfo: any) => { console.log("Failed:", errorInfo); };

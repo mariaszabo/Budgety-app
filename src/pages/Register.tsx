@@ -1,17 +1,18 @@
-import BaseLayout from "@/layouts/BaseLayout";
 import { Button, Card, Checkbox, Form, Input } from "antd";
+import { register } from "@/requests";
+
 
 type FieldType = {
-  fullname?: string;
-  username?: string;
-  password?: string;
-  remember?: string;
-  terms?: boolean;
+  fullName: string;
+  username: string;
+  password: string;
+  terms: boolean;
 };
 
 const Register = () => {
   const onFinish = (values: FieldType) => {
     console.log("Success:", values);
+    register(values);
   };
 
   // const onFinishFailed = (errorInfo: any) => { console.log("Failed:", errorInfo); };
@@ -31,7 +32,7 @@ const Register = () => {
 
         <Form.Item<FieldType>
           label="Full name"
-          name="fullname"
+          name="fullName"
           rules={[{ required: true, message: "Please input your full name!" }]}
         >
           <Input />
