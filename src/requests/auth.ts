@@ -18,7 +18,7 @@ type RegisterRequest = {
   fullName: string;
   username: string;
   password: string;
-    terms: boolean;
+  terms: boolean;
 };
 
 type RegisterResponse = {
