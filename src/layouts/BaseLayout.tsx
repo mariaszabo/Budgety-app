@@ -6,15 +6,20 @@ import {
   UserOutlined,
   VideoCameraOutlined,
 } from '@ant-design/icons';
-import { Layout, Menu, Button, theme } from 'antd';
+import { Layout, Menu, Button, theme, Flex } from 'antd';
+import { useAuth } from '@/contexts/AuthContext';
 
 const { Header, Sider, Content, Footer } = Layout;
 
 type BaseLayoutProps = { //ca sa o putem folosi pentru fiecare pagina
   children: React.ReactNode;
+  username: string;
 };
 
-const BaseLayout = ({children}: BaseLayoutProps) => {
+const BaseLayout = ({children, username}: BaseLayoutProps) => {
+
+  const {user} = useAuth();
+
   const [collapsed, setCollapsed] = useState(false);
   const {
     token: { colorBgContainer, borderRadiusLG },
@@ -49,16 +54,20 @@ const BaseLayout = ({children}: BaseLayoutProps) => {
       </Sider>
       <Layout>
         <Header style={{ padding: 0, background: colorBgContainer }}>
-          <Button
-            type="text"
-            icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-            onClick={() => setCollapsed(!collapsed)}
-            style={{
-              fontSize: '16px',
-              width: 64,
-              height: 64,
-            }}
-          />
+          <Flex justify= "space-between">
+
+            <Button
+              type="text"
+              icon={collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
+              onClick={() => setCollapsed(!collapsed)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            />
+            <div style={{paddingRight: 20 }} >{user?.username}</div>
+          </Flex>
         </Header>
         <Content //acestea sunt setarile pentru continut (un singur card in centru)
           style={{
