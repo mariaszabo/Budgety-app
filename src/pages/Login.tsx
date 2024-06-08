@@ -20,7 +20,7 @@ const Login = () => {
 
     console.log("onFinish:", values);
 
-    await login(values.username, values.password); // asteapta pana cand login(values.username, values.password) este rezolvat
+    await login(values); // asteapta pana cand login(values.username, values.password) este rezolvat
 
     // const result = await login(values); // asteapta pana cand login(values) este rezolvat
 

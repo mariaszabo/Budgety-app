@@ -1,6 +1,6 @@
+import { useAuth } from "@/contexts/AuthContext";
 import { Button, Card, Checkbox, Form, Input } from "antd";
-import { register } from "@/requests";
-
+// import { register } from "@/requests";
 
 type FieldType = {
   fullName: string;
@@ -10,8 +10,9 @@ type FieldType = {
 };
 
 const Register = () => {
+  const { register } = useAuth();
   const onFinish = (values: FieldType) => {
-    console.log("Success:", values);
+    console.log("onFinish:", values);
     register(values);
   };
 
@@ -29,7 +30,6 @@ const Register = () => {
         //  onFinishFailed={onFinishFailed}
         autoComplete="off"
       >
-
         <Form.Item<FieldType>
           label="Full name"
           name="fullName"
@@ -58,7 +58,12 @@ const Register = () => {
           name="terms"
           valuePropName="checked"
           wrapperCol={{ offset: 8, span: 16 }}
-          rules={[{ required: true, message: "Please agree with terms & conditions!" }]}  
+          rules={[
+            {
+              required: true,
+              message: "Please agree with terms & conditions!",
+            },
+          ]}
         >
           <Checkbox>I agree with terms & conditions</Checkbox>
         </Form.Item>
